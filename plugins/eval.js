@@ -30,7 +30,7 @@ const {
 	numToJid,
 	sudoIds,
 	postJson,
-	iswa
+
 	
 } = require("../lib/");
 const util = require('util');
