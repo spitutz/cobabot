@@ -19,7 +19,7 @@ bot({
 	desc: 'To get remoteJid',
 	type: 'whatsapp'
 }, async (message) => {
-	await message.reply(message.mentionedJid[0] ? message.mentionedJid[0] : message.quoted ? message.quoted.sender : message.chat)
+	await message.send(message.mentionedJid[0] ? message.mentionedJid[0] : message.quoted ? message.quoted.sender : message.chat)
 });
 
 bot({
