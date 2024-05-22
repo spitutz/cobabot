@@ -104,3 +104,42 @@ bot(
     await message.send('*Group closed.*');   
   }
 );
+bot(
+  {
+    pattern: "getjids",
+    fromMe: mode,
+    desc: "gets jid of all group members",
+    type: "group",
+  },
+  async (message, match,client) => {
+    if (!message.isGroup)
+      return await message.reply("_This command is for groups_");
+    let { participants } = await client.groupMetadata(message.jid);
+    let participant = participants.map((u) => u.id);
+    let str = "╭──〔 *Group Jids* 〕\n";
+    participant.forEach((result) => {
+      str += `├ *${result}*\n`;
+    });
+    str += `╰──────────────`;
+    message.send(str);
+  }
+);
+bot(
+  {
+    pattern: "tagall",
+    fromMe: mode,
+    desc: "mention all users in group",
+    type: "group",
+  },
+  async (message, match) => {
+    if (!message.isGroup) return;
+    const { participants } = await message.client.groupMetadata(message.jid);
+    let teks = "";
+    for (let mem of participants) {
+      teks += ` @${mem.id.split("@")[0]}\n`;
+    }
+    message.sendMessage(message.jid,teks.trim(), {
+      mentions: participants.map((a) => a.id),
+    });
+  }
+);
