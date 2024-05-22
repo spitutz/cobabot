@@ -1,4 +1,4 @@
-const { bot,mode,isAdmin } = require("../lib/");
+const { bot,mode,isAdmin,sleep } = require("../lib/");
  bot(
   {
     pattern: "promote ?(.*)",
