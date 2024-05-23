@@ -94,7 +94,7 @@ bot(
     await message.reply("_Unmuting_");
     if (!match || isNaN(match)) {
       await message.unmute(message.jid);
-      await message.send('*Group Closed.*');
+      await message.send('*Group opened.*');
       return;
     }
     await message.unmute(message.jid);
