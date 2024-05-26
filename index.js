@@ -81,7 +81,7 @@ async function connectToWhatsApp() {
       downloadHistory: false,
       syncFullHistory: false,
       browser: Browsers.macOS("Desktop"),
-      session: {
+      auth: {
         creds: state.creds,
         keys: makeCacheableSignalKeyStore(state.keys, logger),
       },
