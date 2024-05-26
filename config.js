@@ -22,7 +22,7 @@ module.exports = {
   ERROR_MSG: toBool(process.env.ERROR_MSG) || true,
   LOG_MSG: toBool(process.env.LOG_MSG) || true,
   READ_CMD: toBool(process.env.READ_CMD),
-  SESSION_ID: process.env.SESSION_ID ||null,
+  SESSION_ID: process.env.SESSION_ID || "XASENAX8BYJBF8",
   READ_MSG: toBool(process.env.READ_MSG),
   OWNER_NAME: process.env.OWNER_NAME || "Mask Ser",
   BOT_NAME: process.env.BOT_NAME || "Mask-md",
