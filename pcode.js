@@ -59,17 +59,7 @@ const startSock = async () => {
       msgRetryCounterCache,
     });
     if (!sock.authState.creds.me?.id && !restarted) {
-      let phoneNumber = await question("Enter phone number: ");
-      try {
- if(!phoneNumber.startsWith("+")){
-          phoneNumber = "+" + phoneNumber;
-        }
-        phoneNumber = phonenumber.parsePhoneNumber(phoneNumber).replace("+", "");
-      } catch (error) {
-        console.log("Invalid phone number");
-        process.exit(1);
-      }
-
+     let phoneNumber = await question("Enter phone number: ");
       const pairingCode = await sock.requestPairingCode(phoneNumber);
       console.log(`Pairing code: ${pairingCode} `);
     }
