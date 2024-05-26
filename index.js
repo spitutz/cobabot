@@ -5,6 +5,7 @@ const {
   Browsers,
   fetchLatestBaileysVersion,
   delay,
+  loadSession,
   makeCacheableSignalKeyStore,
 } = require("baileys");
 const fs = require("fs");
