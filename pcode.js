@@ -61,7 +61,10 @@ const startSock = async () => {
     if (!sock.authState.creds.me?.id && !restarted) {
       let phoneNumber = await question("Enter phone number: ");
       try {
-        phoneNumber = phonenumber.parsePhoneNumber(phoneNumber);
+ if(!phoneNumber.startsWith("+")){
+          phoneNumber = "+" + phoneNumber;
+        }
+        phoneNumber = phonenumber.parsePhoneNumber(phoneNumber).replace("+", "");
       } catch (error) {
         console.log("Invalid phone number");
         process.exit(1);
