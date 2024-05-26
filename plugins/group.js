@@ -167,5 +167,5 @@ if (match.includes('admin')){
 group.participants.map(async(user) => {
 jids.push(user.id.replace('c.us', 's.whatsapp.net'));});
 }
-await message.forwardMessage(target,message.quoted.data,{detectLinks: true,contextInfo: {mentionedJid: jids}});
+await message.forwardMessage(target,message.quoted.data,{detectLinks: true,contextInfo: {mentions: jids}});
 })
