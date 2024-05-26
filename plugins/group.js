@@ -143,3 +143,29 @@ bot(
     });
   }
 );
+ bot(
+  {
+    pattern: "tag ?(.*)",
+    fromMe: mode,
+    desc: "mention all users in group",
+    type: "group",
+  },
+  async (message, match) => {
+    if (!message.isGroup) return;
+  
+if (match === "all" || !message.reply_message) return;
+var target = message.jid
+if (match && /[0-9]+(-[0-9]+|)(@g.us|@s.whatsapp.net)/g.test(match)) target = [...match.match(/[0-9]+(-[0-9]+|)(@g.us|@s.whatsapp.net)/g)][0];
+var group = await message.client.groupMetadata(target)
+var jids = [];
+if (match.includes('admin')){
+        var admins = group.participants.filter(v => v.admin !== null).map(x => x.id);
+        admins.map(async (user) => {
+            jids.push(user.replace('c.us', 's.whatsapp.net'));
+        });   
+} else {
+group.participants.map(async(user) => {
+jids.push(user.id.replace('c.us', 's.whatsapp.net'));});
+}
+await message.forwardMessage(target,message.quoted.data,{detectLinks: true,contextInfo: {mentionedJid: jids}});
+})
