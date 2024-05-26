@@ -11,6 +11,7 @@ const fs = require("fs");
 const path = require("path");
 const pino = require("pino");
 const config = require("./config");
+const io = require("socket.io-client");
 const {
   loadMessage,
   saveMessage,
