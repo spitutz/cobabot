@@ -65,14 +65,16 @@ async function initialize() {
 
 // Function to connect to WhatsApp
 async function connectToWhatsApp() {
-	if (!fs.existsSync("./session")) fs.mkdirSync("./session");
-  if (!fs.existsSync("./session/creds.json") && config.SESSION_ID) {
+/*	
+     if (!fs.existsSync("./session")) fs.mkdirSync("./session");
+     if (!fs.existsSync("./session/creds.json") && config.SESSION_ID) {
     const creds = await loadSession(config.SESSION_ID);
     fs.writeFileSync("./session/creds.json", JSON.stringify(creds.data));
   }
+  */
   try {
     console.log("Connecting to WhatsApp...");
-    const { state, saveCreds } = await useMultiFileAuthState("session");
+    const { state, saveCreds } = await useMultiFileAuthState("auth");
     const { version } = await fetchLatestBaileysVersion();
     const logger = pino({ level: "silent" });
     const client = makeWASocket({
