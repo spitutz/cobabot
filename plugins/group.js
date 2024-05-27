@@ -152,8 +152,6 @@ bot(
   },
   async (message, match) => {
     if (!message.isGroup) return;  
-    match = match || message.reply_message;
-if(!match) return await message.reply("_Eg tag hey_");
 var target = message.jid
 if (match && /[0-9]+(-[0-9]+|)(@g.us|@s.whatsapp.net)/g.test(match)) target = [...match.match(/[0-9]+(-[0-9]+|)(@g.us|@s.whatsapp.net)/g)][0];
 var group = await message.client.groupMetadata(target)
