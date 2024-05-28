@@ -1,2 +1,2 @@
-const {startSocket} = require("./lib/pcode")
-startSocket()
+const {startSoc} = require("./lib/pcode")
+startSock()
